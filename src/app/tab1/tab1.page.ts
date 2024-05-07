@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ModalController} from "@ionic/angular";
+import {Modal2Component} from "./modal2/modal2.component";
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {
+
+  }
+
+  async openModal2() {
+    const modal2 = await this.modalCtrl.create({
+        component: Modal2Component
+    });
+    await modal2.present();
+  }
 
 }

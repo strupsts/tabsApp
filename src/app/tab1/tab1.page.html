@@ -1,17 +1,44 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Модалки
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="btns-container">
+    <div class="modals-container">
+      <!--  Реализация открытия модального окна как компонент библиотеки Ionic UI  -->
+      <ion-button color="success" id="open-modal1">Открыть модальное окно 1</ion-button>
+
+      <!--  Реализация открытия модального окна через сервис ModalController  -->
+      <ion-button color="secondary" (click)="openModal2()">Открыть модальное окно 2</ion-button>
+    </div>
+
+    <div>
+      <!--   На случай, если под модальным окном имели ввиду алерт   -->
+      <ion-button id="open-alert" color="warning">Открыть алерт</ion-button>
+    </div>
+  </div>
+
 </ion-content>
+
+
+<!-- Modal -->
+<ion-modal #modal trigger="open-modal1" >
+  <ng-template>
+
+      <app-modal2 [modal]="modal"></app-modal2>
+
+  </ng-template>
+</ion-modal>
+
+<!-- Alert -->
+<ion-alert
+  trigger="open-alert"
+  header="Алерт"
+  message="Тест"
+  [buttons]="['OK']"
+></ion-alert>
